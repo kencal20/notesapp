@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { IState } from './objects'
-import { Container, Row,Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import NoteList from './components/noteList'
+import CreateNote from './components/createNote'
 
 
 export default function App() {
@@ -16,11 +17,14 @@ export default function App() {
 
   }])
   return (
-    <div className='App'>
-      <Container>
+    <div >
+      <Container className='mt-3'>
         <Row>
           <Col>
-      <NoteList  notes={notes} />
+            <NoteList notes={notes} setNotes={setNotes} />
+          </Col>
+          <Col>
+            <CreateNote />
           </Col>
         </Row>
       </Container>
