@@ -1,9 +1,17 @@
 import React from 'react'
+import { IState, Note } from '../objects'
+import NoteItem from './noteItem'
+type Props = {
+    notes: IState['note'][]
+}
 
-type Props = {}
-
-export default function NoteList({}: Props) {
-  return (
-    <div>noteList</div>
-  )
+export default function NoteList({ notes }: Props) {
+    return (
+        <div>
+            {
+                notes.map(note =>
+                    (<NoteItem  key={note.id} note={note}/> ))
+            }
+        </div>
+    )
 }
