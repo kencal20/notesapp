@@ -24,7 +24,7 @@ export default function App() {
             <NoteList notes={notes} setNotes={setNotes} />
           </Col>
           <Col>
-            <CreateNote />
+            <CreateNote notes={notes} setNotes={setNotes} />
           </Col>
         </Row>
       </Container>
