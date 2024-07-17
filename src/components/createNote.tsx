@@ -9,12 +9,13 @@ type Props = {
 
 export default function CreateNote({ notes, setNotes }: Props) {
     const [input, setInput] = useState<Note>({
-        id: new Date().toString(),
+        _id:'',
         title: '',
         text: '',
         color: '#F5F5F5',
-        date: new Date().toString(),
+
     })
+  
 
     const [status, setStatus] = useState<{ text: string, variant: string }>({
         text: '',
@@ -31,17 +32,17 @@ export default function CreateNote({ notes, setNotes }: Props) {
             setStatus({ text: 'All fields are required', variant: 'danger' })
             return
         }
-        
-            setStatus({ text: 'Note Creation Successful', variant: 'success' })
-            setNotes([...notes, input])
-            setInput({ id: '', title: '', text: '', color: '#F5F5F5', date: '' })
-        
+
+        setStatus({ text: 'Note Creation Successful', variant: 'success' })
+        setNotes([...notes, input])
+        setInput({_id:'', title: '', text: '', color: '#F5F5F5', })
+
     }
 
     return (
         <div>
             <h2>Create Note</h2>
-            {status.text && <Alert variant={status.variant} onClose={()=> setStatus({text:'',variant:""})} dismissible>{status.text}</Alert>}
+            {status.text && <Alert variant={status.variant} onClose={() => setStatus({ text: '', variant: "" })} dismissible>{status.text}</Alert>}
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Title</Form.Label>

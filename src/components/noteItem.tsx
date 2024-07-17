@@ -1,21 +1,24 @@
-import React from 'react'
-import { IState } from '../objects'
-import { Button, Card } from 'react-bootstrap'
+import React from 'react';
+import { IState } from '../objects';
+import { Button, Card } from 'react-bootstrap';
 
 type Props = {
-  note: IState['note']
-  handleDelete: (id: string) => void
-}
+  note: IState['note'];
+  handleDelete: (_id: string) => void
+};
 
-export default function NoteItem({ note,handleDelete }: Props) {
+export default function NoteItem({ note, handleDelete }: Props) {
+  // Destructure note object to access id
+  const {  _id, title, text, color,  } = note;
+
   return (
-    <Card style={{ backgroundColor: note.color }}>
+    <Card className='mb-3' style={{ backgroundColor: color }}>
       <Card.Body>
-        <Card.Title>{note.title}</Card.Title>
-        <Card.Text>{note.text}</Card.Text>
-        <Card.Subtitle className="mb-2 text-muted">{note.date}</Card.Subtitle>
-        <Button variant='danger' onClick={()=> handleDelete(note.id)}>Delete</Button>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{text}</Card.Text>
+        {/* Pass id to handleDelete function */}
+        <Button variant='danger' onClick={() => handleDelete(_id)}>Delete</Button>
       </Card.Body>
     </Card>
-  )
+  );
 }
