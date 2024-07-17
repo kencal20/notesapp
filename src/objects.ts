@@ -1,9 +1,9 @@
 export type Note = {
-    id: string
+    _id: string;
     title: string
     text: string
     color: string
-    date: string
+
 }
 
 export type IState = {
